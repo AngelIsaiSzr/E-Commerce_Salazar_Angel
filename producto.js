@@ -26,30 +26,34 @@ const data = [
     }
 ];
 
-// Función para generar las tarjetas de productos
-function generarTarjetas(productos) {
-    const cardsArray = productos.map(producto => `
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-                <img src="${producto.imagen}" class="card-img-top" alt="${producto.titulo}">
-                <div class="card-body">
-                    <h5 class="card-title">${producto.titulo}</h5>
-                    <p class="card-text">${producto.descripcion}</p>
-                    <p class="card-text"><strong>Precio: $${producto.precio.toFixed(2)}</strong></p>
-                    <a href="producto.html?prod=${producto.id}" class="btn btn-success">Ver más</a>
-                </div>
-            </div>
-        </div>
-    `).join('');
-    
-    document.querySelector('.row').innerHTML = cardsArray;
-}
-
 // Llamar al generador de la barra de navegación y configurar el buscador
 generarNavbar(configurarBuscador);
 
-// Mostrar todos los productos al cargar la página
-generarTarjetas(data);
+// Obtener el ID del producto desde la URL
+const params = new URLSearchParams(window.location.search);
+const productId = parseInt(params.get('prod'), 10);
+
+// Filtrar el producto que coincida con el ID
+const producto = data.find(item => item.id === productId);
+
+// Crear la estructura HTML con los datos del producto seleccionado
+if (producto) {
+    const etiquetas = `
+        <div class="producto">
+            <h1>${producto.titulo}</h1>
+            <img src="${producto.imagen}" alt="${producto.titulo}">
+            <p>${producto.descripcion}</p>
+            <p><strong>Precio: $${producto.precio.toFixed(2)}</strong></p>
+            <p>Stock disponible: ${producto.stock}</p>
+        </div>
+    `;
+    
+    // Insertar el contenido generado en el main de producto.html
+    document.querySelector('main').innerHTML = etiquetas;
+} else {
+    // Si el producto no existe, mostrar un mensaje de error
+    document.querySelector('main').innerHTML = '<p>Producto no encontrado</p>';
+}
 
 // Función para configurar el buscador
 function configurarBuscador() {

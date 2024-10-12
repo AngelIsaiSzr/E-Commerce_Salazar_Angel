@@ -48,8 +48,41 @@ function generarTarjetas(productos) {
 // Llamar al generador de la barra de navegación y configurar el buscador
 generarNavbar(configurarBuscador);
 
-// Mostrar todos los productos al cargar la página
-generarTarjetas(data);
+// Capturar el parámetro de búsqueda de la URL
+const params = new URLSearchParams(window.location.search);
+const searchTerm = params.get('search');
+
+// Mantener el valor del término de búsqueda en el input
+const searchInput = document.getElementById('searchInput');
+if (searchTerm) {
+    searchInput.value = searchTerm; // Mostrar el término en el input
+    const filterData = data.filter(producto =>
+        producto.titulo.toLowerCase().includes(searchTerm) ||
+        producto.descripcion.toLowerCase().includes(searchTerm)
+    );
+    generarTarjetas(filterData);
+} else {
+    // Si no hay término de búsqueda, mostrar todos los productos
+    generarTarjetas(data);
+}
+
+// Capturar los botones de categorías
+const categoriaButtons = document.querySelectorAll('button[data-categoria]');
+const verTodosButton = document.getElementById('verTodos');
+
+// Filtrar por categoría al hacer clic en los botones de categorías
+categoriaButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const categoria = button.getAttribute('data-categoria');
+        const filterData = data.filter(producto => producto.categoria === categoria);
+        generarTarjetas(filterData);
+    });
+});
+
+// Mostrar todos los productos cuando se hace clic en "Ver Todos"
+verTodosButton.addEventListener('click', () => {
+    generarTarjetas(data); // Mostrar todos los productos
+});
 
 // Función para configurar el buscador
 function configurarBuscador() {
