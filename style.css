@@ -96,6 +96,155 @@ body {
     background-color: #13663f;
 }
 
+/* Contenedor para la sección de categorías y productos */
+.category-products-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 0px 15px;
+}
+
+/* Barra lateral de categorías */
+.category-sidebar {
+    width: 105px;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category-sidebar .btn {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Contenedor de productos */
+.products-container {
+    flex-grow: 1;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Alineación de tarjetas de productos */
+.products-container .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+/* Estilos para las tarjetas de productos */
+.products-container .col-lg-4 {
+    flex: 1 1 calc(33.333% - 20px); /* 3 tarjetas por fila */
+    max-width: calc(33.333% - 20px); /* Ajuste máximo */
+}
+
+/* Estilos responsivos para la sección de categorías y productos */
+@media (max-width: 768px) {
+    .category-products-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category-sidebar {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .products-container .col-lg-4 {
+        flex: 1 1 100%; /* Tarjetas a una por fila en pantallas pequeñas */
+        max-width: 100%;
+    }
+}
+
+
+/* Estilos para la sección de detalles del producto */
+.product-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail-container img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.product-detail-content {
+    text-align: center;
+}
+
+.product-detail-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #12643e;
+}
+
+.product-detail-content p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.product-detail-content strong {
+    display: block;
+    font-size: 1.5rem;
+    color: #198754;
+    margin-bottom: 1rem;
+}
+
+.product-detail-content .btn-success {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    background-color: #198754;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.product-detail-content .btn-success:hover {
+    background-color: #13663f;
+}
+
+/* Estilos para el stock disponible */
+.product-detail-stock {
+    font-size: 1.1rem;
+    color: #198754;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilos para la sección de detalles de productos en pantallas pequeñas */
+@media (max-width: 768px) {
+    .product-detail-container {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+
+    .product-detail-content h1 {
+        font-size: 1.75rem;
+    }
+
+    .product-detail-content p {
+        font-size: 1rem;
+    }
+
+    .product-detail-content strong {
+        font-size: 1.25rem;
+    }
+
+    .product-detail-content .btn-success {
+        font-size: 1rem;
+    }
+}
+
 /* Estilos para el pie de página */
 footer {
     color: #fff;

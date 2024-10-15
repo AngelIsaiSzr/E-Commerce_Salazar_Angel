@@ -13,23 +13,21 @@
 </head>
 
 <body>
-    <!-- Botones de categorías -->
-    <div class="container my-4">
-        <div class="">
-            <div class="col text-center">
-                <button class="btn btn-primary" id="verTodos">Ver Todos</button>
-                <button class="btn btn-secondary" data-categoria="Hogar">Hogar</button>
-                <button class="btn btn-secondary" data-categoria="Cocina">Cocina</button>
-                <button class="btn btn-secondary" data-categoria="Moda">Moda</button>
-            </div>
+    <!-- Contenedor principal de categorías y productos -->
+    <div class="my-4 category-products-wrapper">
+        <!-- Barra lateral de categorías -->
+        <div class="category-sidebar">
+            <button class="btn btn-primary" id="verTodos">Ver Todos</button>
+            <button class="btn btn-secondary" data-categoria="Hogar">Hogar</button>
+            <button class="btn btn-secondary" data-categoria="Cocina">Cocina</button>
+            <button class="btn btn-secondary" data-categoria="Moda">Moda</button>
+        </div>
+
+        <!-- Sección de Productos -->
+        <div class="products-container">
+            <div class="row"></div>
         </div>
     </div>
-
-    <!-- Sección de Productos -->
-    <div class="container my-4">
-        <div class="row"></div>
-    </div>
-
 
     <script src="navbar.js"></script>
     <script src="productos.js"></script>

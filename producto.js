@@ -6,7 +6,8 @@ const data = [
         "descripcion": "Botella de acero inoxidable de 750 ml, perfecta para mantener tus bebidas frías o calientes durante todo el día. Libre de BPA, segura y duradera.",
         "precio": 25.99,
         "imagen": "https://http2.mlstatic.com/D_NQ_NP_670471-MLM75693115055_042024-O.webp",
-        "categoria": "Hogar"
+        "categoria": "Hogar",
+        "stock": 20
     },
     {
         "id": 2,
@@ -14,7 +15,8 @@ const data = [
         "descripcion": "Este set incluye 7 utensilios de cocina (cuchara, espátula, tenedor, cuchara ranurada, espátula ranurada, etc), hechos de bambú 100% natural.",
         "precio": 19.99,
         "imagen": "https://i.blogs.es/715892/8-piezas-juego-de-utensilios-de-cocina-de-madera-de-bambu/original.jpeg",
-        "categoria": "Cocina"
+        "categoria": "Cocina",
+        "stock": 15
     },
     {
         "id": 3,
@@ -22,7 +24,8 @@ const data = [
         "descripcion": "Bolsas de tela resistente, perfectas y cómodas para llevar tus compras diarias. Hechas de algodón orgánico, lavables, reutilizables y duraderas.",
         "precio": 12.99,
         "imagen": "https://i.etsystatic.com/19857089/r/il/373b2c/3833517693/il_570xN.3833517693_8d4l.jpg",
-        "categoria": "Moda"
+        "categoria": "Moda",
+        "stock": 50
     }
 ];
 
@@ -36,18 +39,22 @@ const productId = parseInt(params.get('prod'), 10);
 // Filtrar el producto que coincida con el ID
 const producto = data.find(item => item.id === productId);
 
-// Crear la estructura HTML con los datos del producto seleccionado
+// Crear la estructura HTML con los datos del producto seleccionado y aplicar las clases CSS
 if (producto) {
     const etiquetas = `
-        <div class="producto">
-            <h1>${producto.titulo}</h1>
+        <div class="product-detail-container">
             <img src="${producto.imagen}" alt="${producto.titulo}">
-            <p>${producto.descripcion}</p>
-            <p><strong>Precio: $${producto.precio.toFixed(2)}</strong></p>
-            <p>Stock disponible: ${producto.stock}</p>
+            
+            <div class="product-detail-content">
+                <h1>${producto.titulo}</h1>
+                <p>${producto.descripcion}</p>
+                <strong>Precio: $${producto.precio.toFixed(2)}</strong>
+                <p class="product-detail-stock">Stock disponible: ${producto.stock} unidades</p>
+                <a href="#" class="btn btn-success">Comprar ahora</a>
+            </div>
         </div>
     `;
-    
+
     // Insertar el contenido generado en el main de producto.html
     document.querySelector('main').innerHTML = etiquetas;
 } else {
