@@ -21,9 +21,12 @@
 
 ```
 EcoMundo/
+├── assets
 ├── index.html
-├── README.md
-└── style.css
+├── login.html
+├── producto.html
+├── productos.html
+└── README.md
 ```
 
 ## Contacto

@@ -38,6 +38,34 @@ body {
     color: #12643e;
 }
 
+.search-section .btn {
+    border: none;
+    margin-right: -10px;
+}
+
+.cart-section {
+    margin-left: 10px;
+}
+
+/* Estilos para el login */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 70px); /* Resta el espacio ocupado por la navbar */
+    padding: 1rem;
+    background-color: #f8f9fa;
+}
+
+/* Mensaje de error */
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: none;
+}
+
 /* Estilos para el banner principal */
 .container-fluid.p-5 {
     background: linear-gradient(45deg, #198754, #12643e);
@@ -124,7 +152,6 @@ body {
     background-color: #fff;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Alineación de tarjetas de productos */
@@ -159,7 +186,6 @@ body {
     }
 }
 
-
 /* Estilos para la sección de detalles del producto */
 .product-detail-container {
     display: flex;
@@ -168,7 +194,6 @@ body {
     padding: 2rem;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .product-detail-container img {
@@ -221,6 +246,26 @@ body {
     margin-bottom: 1.5rem;
 }
 
+/* Estilos para la cantidad */
+.action-section label {
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+.action-section .form-control {
+    text-align: center;
+}
+
+.action-section-count {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.action-section-count input {
+    margin: 0 10px;
+}
+
 /* Estilos para la sección de detalles de productos en pantallas pequeñas */
 @media (max-width: 768px) {
     .product-detail-container {
@@ -242,6 +287,10 @@ body {
 
     .product-detail-content .btn-success {
         font-size: 1rem;
+    }
+    
+    .action-section-count input {
+        height: 38px;
     }
 }
 
@@ -283,6 +332,10 @@ footer .p-3 {
 @media (max-width: 768px) {
     .navbar-nav {
         text-align: center;
+    }
+
+    .btn-outline-secondary {
+        margin-top: 20px;
     }
 
     .container-fluid h1 {
