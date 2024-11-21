@@ -44,8 +44,10 @@ function generarNavbar(callback) {
     
                     <!-- Carrito -->
                     <div class="cart-section d-flex align-items-center">
-                        <i class="bi bi-cart"></i>
-                        <span id="quantity">${quantity}</span>
+                        <a href="cart.html" class="d-flex align-items-center" style="text-decoration: none;">
+                            <i class="bi bi-cart"></i>
+                            <span id="quantity">${quantity}</span>
+                        </a>
                     </div>
     
                 </div>
@@ -78,6 +80,41 @@ function generarNavbar(callback) {
     if (callback && typeof callback === "function") {
         callback();
     }
+}
+
+// Llamar al generador de la barra de navegación y configurar el buscador
+generarNavbar(configurarBuscador);
+
+// Función para configurar el buscador
+function configurarBuscador() {
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const clearButton = document.getElementById('clearButton');
+
+    // Búsqueda al hacer clic en "Buscar"
+    searchButton.addEventListener('click', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        if (searchTerm) {
+            window.location.href = `productos.html?search=${searchTerm}`;
+        }
+    });
+
+    // Búsqueda también al presionar "Enter"
+    searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Evitar el comportamiento por defecto del form
+            const searchTerm = searchInput.value.toLowerCase();
+            if (searchTerm) {
+                window.location.href = `productos.html?search=${searchTerm}`;
+            }
+        }
+    });
+
+    // Limpiar el filtro cuando se hace clic en el botón de limpiar
+    clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        window.location.href = 'productos.html'; // Redirigir y mostrar todos los productos
+    });
 }
 
 // Función para cerrar sesión

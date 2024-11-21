@@ -29,9 +29,6 @@ const data = [
     }
 ];
 
-// Llamar al generador de la barra de navegación y configurar el buscador
-generarNavbar(configurarBuscador);
-
 // Obtener el ID del producto desde la URL
 const params = new URLSearchParams(window.location.search);
 const productId = parseInt(params.get("prod"), 10);
@@ -106,6 +103,7 @@ function decrementarCantidad() {
 }
 
 // Agregar al carrito
+// Agregar al carrito
 function addCart() {
     const cantidad = parseInt(document.getElementById("cantidad").value, 10);
     let cart = JSON.parse(localStorage.getItem("cart"));
@@ -125,48 +123,13 @@ function addCart() {
     // Actualizar el tag #quantity en la navbar
     document.getElementById("quantity").textContent = totalQuantity;
 
-    alert("Producto agregado al carrito.");
-}
-
-
-// Función para comprar el producto
-function comprarProducto() {
-    const cantidad = parseInt(document.getElementById("cantidad").value, 10);
-    if (cantidad > 0 && cantidad <= producto.stock) {
-        alert(`Has comprado ${cantidad} unidades de ${producto.titulo}.`);
-    } else {
-        alert("Cantidad inválida. Por favor, verifica el stock.");
-    }
-}
-
-// Función para configurar el buscador
-function configurarBuscador() {
-    const searchInput = document.getElementById("searchInput");
-    const searchButton = document.getElementById("searchButton");
-    const clearButton = document.getElementById("clearButton");
-
-    // Búsqueda al hacer clic en "Buscar"
-    searchButton.addEventListener("click", () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        if (searchTerm) {
-            window.location.href = `productos.html?search=${searchTerm}`;
-        }
-    });
-
-    // Búsqueda también al presionar "Enter"
-    searchInput.addEventListener("keypress", (event) => {
-        if (event.key === "Enter") {
-            event.preventDefault(); // Evitar el comportamiento por defecto del form
-            const searchTerm = searchInput.value.toLowerCase();
-            if (searchTerm) {
-                window.location.href = `productos.html?search=${searchTerm}`;
-            }
-        }
-    });
-
-    // Limpiar el filtro cuando se hace clic en el botón de limpiar
-    clearButton.addEventListener("click", () => {
-        searchInput.value = "";
-        window.location.href = "productos.html"; // Redirigir y mostrar todos los productos
-    });
+    // Mostrar notificación con Toastify
+    Toastify({
+        text: `${cantidad} unidad(es) de "${producto.titulo}" agregada(s) al carrito.`,
+        duration: 3000,
+        gravity: "bottom",
+        position: "right",
+        backgroundColor: "#198754",
+        stopOnFocus: true,
+    }).showToast();
 }

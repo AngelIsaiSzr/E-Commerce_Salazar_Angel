@@ -45,9 +45,6 @@ function generarTarjetas(productos) {
     document.querySelector('.row').innerHTML = cardsArray;
 }
 
-// Llamar al generador de la barra de navegación y configurar el buscador
-generarNavbar(configurarBuscador);
-
 // Capturar el parámetro de búsqueda de la URL
 const params = new URLSearchParams(window.location.search);
 const searchTerm = params.get('search');
@@ -83,35 +80,3 @@ categoriaButtons.forEach(button => {
 verTodosButton.addEventListener('click', () => {
     generarTarjetas(data); // Mostrar todos los productos
 });
-
-// Función para configurar el buscador
-function configurarBuscador() {
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-    const clearButton = document.getElementById('clearButton');
-
-    // Búsqueda al hacer clic en "Buscar"
-    searchButton.addEventListener('click', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        if (searchTerm) {
-            window.location.href = `productos.html?search=${searchTerm}`;
-        }
-    });
-
-    // Búsqueda también al presionar "Enter"
-    searchInput.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault(); // Evitar el comportamiento por defecto del form
-            const searchTerm = searchInput.value.toLowerCase();
-            if (searchTerm) {
-                window.location.href = `productos.html?search=${searchTerm}`;
-            }
-        }
-    });
-
-    // Limpiar el filtro cuando se hace clic en el botón de limpiar
-    clearButton.addEventListener('click', () => {
-        searchInput.value = '';
-        window.location.href = 'productos.html'; // Redirigir y mostrar todos los productos
-    });
-}

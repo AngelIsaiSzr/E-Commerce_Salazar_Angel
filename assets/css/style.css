@@ -47,6 +47,10 @@ body {
     margin-left: 10px;
 }
 
+.cart-section a {
+    color: rgb(42, 40, 40);
+}
+
 /* Estilos para el login */
 .login-container {
     display: flex;
@@ -292,6 +296,21 @@ body {
     .action-section-count input {
         height: 38px;
     }
+}
+
+/* Estilos para el carrito */
+
+#cart .card .me-4 {
+    width: 180px;
+    height: 160px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#cart .card .me-4 img {
+    width: 100%;
 }
 
 /* Estilos para el pie de página */

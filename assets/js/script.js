@@ -42,43 +42,26 @@ function generarTarjetas(productos) {
         </div>
     `).join('');
     
-    document.querySelector('.row').innerHTML = cardsArray;
+    document.querySelector('#productGrid').innerHTML = cardsArray;
 }
 
-// Llamar al generador de la barra de navegación y configurar el buscador
-generarNavbar(configurarBuscador);
+// Mostrar loader y luego la grilla de productos
+function cargarProductos() {
+    const loader = document.getElementById("loader");
+    const productGrid = document.getElementById("productGrid");
 
-// Mostrar todos los productos al cargar la página
-generarTarjetas(data);
-
-// Función para configurar el buscador
-function configurarBuscador() {
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-    const clearButton = document.getElementById('clearButton');
-
-    // Búsqueda al hacer clic en "Buscar"
-    searchButton.addEventListener('click', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        if (searchTerm) {
-            window.location.href = `productos.html?search=${searchTerm}`;
-        }
-    });
-
-    // Búsqueda también al presionar "Enter"
-    searchInput.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault(); // Evitar el comportamiento por defecto del form
-            const searchTerm = searchInput.value.toLowerCase();
-            if (searchTerm) {
-                window.location.href = `productos.html?search=${searchTerm}`;
-            }
-        }
-    });
-
-    // Limpiar el filtro cuando se hace clic en el botón de limpiar
-    clearButton.addEventListener('click', () => {
-        searchInput.value = '';
-        window.location.href = 'productos.html'; // Redirigir y mostrar todos los productos
+    // Simular un retraso de 3 segundos con una promesa
+    new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 3000); // 3 segundos
+    }).then(() => {
+        // Ocultar el loader y mostrar la grilla de productos
+        loader.classList.add("d-none");
+        productGrid.classList.remove("d-none");
+        generarTarjetas(data); // Generar las tarjetas
     });
 }
+
+// Iniciar la carga de productos al cargar la página
+cargarProductos();
