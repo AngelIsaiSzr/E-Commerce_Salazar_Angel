@@ -59,10 +59,16 @@ body {
     justify-content: center;
     height: calc(100vh - 70px); /* Resta el espacio ocupado por la navbar */
     padding: 1rem;
-    background-color: #f8f9fa;
+    
 }
 
-/* Mensaje de error */
+#loginForm {
+    background-color: #eef0f1;
+    padding: 20px 50px;
+    border-radius: 15px;
+    text-align: center;
+}
+
 .error-message {
     color: red;
     font-size: 0.9rem;
