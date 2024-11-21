@@ -125,7 +125,7 @@ document.getElementById("btn-checkout").addEventListener("click", () => {
                 title: "¡Compra realizada con éxito!",
                 html: `
                     <p>Email: ${order.email}</p>
-                    <p>Número de Orden: ${order.id}</p>
+                    <p>Número de Orden: ${order.id_shop}</p>
                     <p>Total: $${order.total}</p>
                 `,
                 icon: "success",
